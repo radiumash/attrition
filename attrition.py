@@ -2,20 +2,14 @@ import streamlit as st
 from PIL import Image
 
 import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
 from sklearn.preprocessing import OneHotEncoder
 
-from sklearn.metrics import accuracy_score, recall_score, confusion_matrix
-from sklearn.model_selection import cross_val_score
+from sklearn.metrics import accuracy_score
 from sklearn.svm import SVC
 from sklearn.linear_model import LogisticRegression
 from sklearn.naive_bayes import GaussianNB
 from sklearn.model_selection import train_test_split
 
-from sklearn.metrics import accuracy_score, recall_score, confusion_matrix
-from sklearn.model_selection import cross_val_score
 from sklearn.preprocessing import MinMaxScaler
 scaler = MinMaxScaler()
 
