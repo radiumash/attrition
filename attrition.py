@@ -126,8 +126,8 @@ if uploaded_file is not None:
 
         # Numerical Features
         data['Customer_Age'].fillna(int(data['Customer_Age'].mean()),inplace=True)
-        data['Dependent_Count'].fillna(int(data['Dependent_Count'].mean()),inplace=True)
-        data['Months_on_Book'].fillna(int(data['Months_on_Book'].mean()),inplace=True)
+        data['Dependent_count'].fillna(int(data['Dependent_count'].mean()),inplace=True)
+        data['Months_on_book'].fillna(int(data['Months_on_book'].mean()),inplace=True)
         data['Total_Relationship_Count'].fillna(int(data['Total_Relationship_Count'].mean()),inplace=True)
         data['Months_Inactive'].fillna(int(data['Months_Inactive'].mean()),inplace=True)
         data['Contacts_Count'].fillna(int(data['Contacts_Count'].mean()),inplace=True)
@@ -142,8 +142,6 @@ if uploaded_file is not None:
         data['Income_Category'].fillna(data['Income_Category'].mode().iloc[0],inplace=True)
         data['Card_Category'].fillna(data['Card_Category'].mode().iloc[0],inplace=True)
         data['Attrition_Flag'].fillna(data['Attrition_Flag'].mode().iloc[0],inplace=True)
-
-        data.isnull().sum()
 
         OE = OneHotEncoder(handle_unknown='ignore')
         E=OE.fit_transform(data[['Gender','Education_Level','Marital_Status','Income_class','Card_Category']])
