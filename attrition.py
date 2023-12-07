@@ -124,6 +124,27 @@ if uploaded_file is not None:
     if st.button('Generate Accuracy', type="primary"):
         data['Income_class']=data['Income_Category'].apply(create_column)
 
+        # Numerical Features
+        data['Customer_Age'].fillna(int(data['Customer_Age'].mean()),inplace=True)
+        data['Dependent_Count'].fillna(int(data['Dependent_Count'].mean()),inplace=True)
+        data['Months_on_Book'].fillna(int(data['Months_on_Book'].mean()),inplace=True)
+        data['Total_Relationship_Count'].fillna(int(data['Total_Relationship_Count'].mean()),inplace=True)
+        data['Months_Inactive'].fillna(int(data['Months_Inactive'].mean()),inplace=True)
+        data['Contacts_Count'].fillna(int(data['Contacts_Count'].mean()),inplace=True)
+        data['Credit_Limit'].fillna(int(data['Credit_Limit'].mean()),inplace=True)
+        data['Total_Revolving_Bal'].fillna(int(data['Total_Revolving_Bal'].mean()),inplace=True)
+        data['Total_Trans_Ct'].fillna(int(data['Total_Trans_Ct'].mean()),inplace=True)
+
+        # Categorical Features
+        data['Gender'].fillna(data['Gender'].mode().iloc[0],inplace=True)
+        data['Education_Level'].fillna(data['Education_Level'].mode().iloc[0],inplace=True)
+        data['Marital_Status'].fillna(data['Marital_Status'].mode().iloc[0],inplace=True)
+        data['Income_Category'].fillna(data['Income_Category'].mode().iloc[0],inplace=True)
+        data['Card_Category'].fillna(data['Card_Category'].mode().iloc[0],inplace=True)
+        data['Attrition_Flag'].fillna(data['Attrition_Flag'].mode().iloc[0],inplace=True)
+
+        data.isnull().sum()
+
         OE = OneHotEncoder(handle_unknown='ignore')
         E=OE.fit_transform(data[['Gender','Education_Level','Marital_Status','Income_class','Card_Category']])
         encoder_df = pd.DataFrame(E.toarray())
